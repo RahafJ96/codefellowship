@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="fragments/navfrag :: navbar"> </nav>
+<div class="form-style-5">
+    <form method="post" th:action="@{/login}">
+        <fieldset>
+            <legend><span class="number">CFS</span> Sign In</legend>
+            <input type="text" name="username" placeholder="User Name" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </fieldset>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+    </form>
+</div>
+</body>
+</html>
