@@ -6,28 +6,36 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String userName;
     private String password;
     private String firstName;
     private String lastName;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String bio;
 
-    public ApplicationUser(String userName, String password, String firstName, String lastName, String dateOfBirth, String bio) {
+    @OneToMany(mappedBy = "applicationUser")
+    List<Post> posts;
+
+    public ApplicationUser(String userName, String password, String firstName, String lastName, Date dateOfBirth, String bio) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.bio = bio;
+    }
+    public ApplicationUser(String userName,String password){
+        this.userName=userName;
+        this.password=password;
     }
 
     public ApplicationUser() {
@@ -55,6 +63,7 @@ public class ApplicationUser implements UserDetails {
     public String getUsername() {
         return null;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -96,11 +105,11 @@ public class ApplicationUser implements UserDetails {
         this.lastName = lastName;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -118,5 +127,13 @@ public class ApplicationUser implements UserDetails {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }

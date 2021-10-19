@@ -1,11 +1,14 @@
 package com.codefellows.demo.infrastructure;
 
 import com.codefellows.demo.Model.ApplicationUser;
-import org.hibernate.metamodel.model.convert.spi.JpaAttributeConverter;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.context.annotation.Bean;
 
-public interface ApplicationUserRepository extends JpaAttributeConverter<ApplicationUser,Long> {
-        ApplicationUser findApplicationUserByUsername(String userName);
-        ApplicationUser getById(Long id);
+public interface ApplicationUserRepository extends JpaRepository<ApplicationUser,Long> {
 
-        ApplicationUser save(ApplicationUser newUser);
+        ApplicationUser findByUsername(String userName);
+
+        ApplicationUser findById(long id);
+
+        //ApplicationUser save(ApplicationUser newUser);
 }
