@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
+        body{
+            background-color: #F2F2F2;
+        }
         .container{
             padding:5%;
         }
@@ -12,9 +15,10 @@
             text-align:center;
         }
         .container .details{
-            border-left:3px solid #ded4da;
+            border-left:3px solid #555555;
         }
         .container .details p{
+            color: #555555;
             font-size:15px;
             font-weight:bold;
         }
@@ -56,7 +60,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 img">
-                <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"  alt="" class="img-rounded">
+                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG.png"  alt="" style="width: 70%;height: 90%">
             </div>
             <div class="col-md-6 details">
                 <blockquote>
@@ -70,7 +74,7 @@
         </div>
     </div>
 
-    <div th:replace="fragments/post :: post">...</div>
+    <div th:replace="fragments/post :: post">my Post</div>
 
     <ul>
         <li th:each="post : ${applicatonUser.posts}">
