@@ -17,16 +17,17 @@
 
 <style>
     body {
-        background: #e9ecef;
+        background: #FFE6E6;
     }
     form {
+        color: #555555;
         width: 60%;
         margin: 60px auto;
-        background: #efefef;
+        background: #EBD5D5;
         padding: 60px 120px 80px 120px;
         text-align: center;
         -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-        box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+        box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
     }
     label {
         display: block;
@@ -96,42 +97,41 @@
     }
 </style>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <span class="navbar-brand mb-0 h1">Codefellowship</span>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <span class="navbar-brand mb-0 h1">Codefellowship</span>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/signup">Signup</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/myprofile">My Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Sign-up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/myprofile">My Profile</a>
+                    </li>
 
-
-
-
-        </div>
-    </nav>
+                </ul>
+                <div class="float: right;">
+                    <li class="nav-item d-flex">
+                        <a class="nav-link btn btn-danger" style="align-text: right" href="/logout" role="button">Log-out</a>
+                    </li>
+                </div>
+            </div>
+        </nav>
 </header>
 
-<main class="container">
-    <h1>Log in to your account:</h1>
+<main class="container text-center mg">
+    <h1>Log in here</h1>
     <form method="POST" action="/login">
 
         <label  for="username">
-            <p class="label-txt">ENTER Username</p>
+            <p class="label-txt">Username</p>
             <input type="text" class="input" name="username" id="username">
             <div class="line-box">
                 <div class="line"></div>
@@ -146,7 +146,7 @@
             </div>
         </label>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success btn-lg">Log in</button>
     </form>
     <script>
         $(document).ready(function(){
