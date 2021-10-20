@@ -13,9 +13,9 @@
 
     <title>CodeFellowShip</title>
 </head>
-<body>
+<body style="background-color: #DDFFBC">
 <main>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Codefellowship</span>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,7 +28,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/signup">Signup</a>
+                    <a class="nav-link" href="/signup">Sign-up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/myprofile">My Profile</a>
@@ -41,13 +41,13 @@
         </div>
     </nav>
 </main>
-<div class="jumbotron">
-    <h2 class="display-4">Welcome to Codefellowship</h2>
-    <h2>Hello, <span th:text="${principal}"></span>!</h2>
+<div class="jumbotron" style="background-color: #DDFFBC;text-align: center ; color: #555555">
+    <h2 class="display-4" style="text-align: center ; font-weight:bold">Welcome to the Codefellowship application !</h2>
+    <h2>Hi, <span th:text="${principal}"></span>!</h2>
     <hr class="my-4">
-    <p>Sign Up Now !</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/signup" role="button">Signup</a>
+        <p>Join us Now !</p>
+    <p class="lead d-grid gap-2 col-6 mx-auto">
+        <a class="btn btn-success btn-lg d-grid gap-2 col-6 mx-auto" href="/signup" role="button">Sign up</a>
     </p>
 </div>
 </body>
