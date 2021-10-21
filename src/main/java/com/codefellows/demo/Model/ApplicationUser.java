@@ -15,7 +15,7 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String userName;
+    private String username;
     private String password;
     private String firstName;
     private String lastName;
@@ -25,16 +25,16 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(mappedBy = "applicationUser")
     List<Post> posts;
 
-    public ApplicationUser(String userName, String password, String firstName, String lastName, Date dateOfBirth, String bio) {
-        this.userName = userName;
+    public ApplicationUser(String username, String password,Date dateOfBirth, String firstName, String lastName,  String bio) {
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.bio = bio;
     }
-    public ApplicationUser(String userName,String password){
-        this.userName=userName;
+    public ApplicationUser(String username,String password){
+        this.username=username;
         this.password=password;
     }
 
@@ -42,12 +42,12 @@ public class ApplicationUser implements UserDetails {
 
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -58,12 +58,6 @@ public class ApplicationUser implements UserDetails {
     public String getPassword() {
         return password;
     }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
 
     @Override
     public boolean isAccountNonExpired() {

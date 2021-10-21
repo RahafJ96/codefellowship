@@ -98,28 +98,33 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <span class="navbar-brand mb-0 h1">Codefellowship</span>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <span class="navbar-brand mb-0 h1">Codefellowship</span>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/signup">Signup</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/myprofile">My Profile</a>
-                </li>
-            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Sign-up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/myprofile">My Profile</a>
+                    </li>
 
-        </div>
-    </nav>
+                </ul>
+                <div class="float: right;">
+                    <li class="nav-item d-flex">
+                        <a class="nav-link btn btn-danger" style="align-text: right" href="/logout" role="button">Log-out</a>
+                    </li>
+                </div>
+            </div>
+        </nav>
 </header>
 
 <h2>Sign Up</h2>
@@ -127,7 +132,7 @@
 <form method="POST" action="/users">
 
     <label  for="username">
-        <p class="label-txt">ENTER Username</p>
+        <p class="label-txt"> USERNAME</p>
         <input type="text" class="input" name="username" id="username">
         <div class="line-box">
             <div class="line"></div>
@@ -135,32 +140,32 @@
     </label>
 
     <label  for="password">
-        <p class="label-txt">ENTER PASSWORD</p>
+        <p class="label-txt"> PASSWORD</p>
         <input type="password" class="input" name="password" id="password">
         <div class="line-box">
             <div class="line"></div>
         </div>
     </label>
 
-    <label  for="firstname">
-        <p class="label-txt">ENTER FIRST NAME</p>
-        <input type="text" class="input" name="firstname" id="firstname">
+    <label  for="firstName">
+        <p class="label-txt"> FIRST NAME</p>
+        <input type="text" class="input" name="firstName" id="firstName">
         <div class="line-box">
             <div class="line"></div>
         </div>
     </label>
 
-    <label  for="lastname">
-        <p class="label-txt">ENTER LAST NAME</p>
-        <input type="text" class="input" name="lastname" id="lastname">
+    <label  for="lastName">
+        <p class="label-txt"> LAST NAME</p>
+        <input type="text" class="input" name="lastName" id="lastName">
         <div class="line-box">
             <div class="line"></div>
         </div>
     </label>
 
-    <label  for="dob">
+    <label  for="dateOfBirth">
         <p class="label-txt">Date of Birth</p>
-        <input type="date" class="input" name="dob" id="dob">
+        <input type="date" class="input" name="dateOfBirth" id="dateOfBirth">
         <div class="line-box">
             <div class="line"></div>
         </div>
@@ -176,7 +181,7 @@
 
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Sign up</button>
 </form>
 <script>
     $(document).ready(function(){

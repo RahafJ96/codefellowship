@@ -32,10 +32,10 @@ public class ApplicationUserController {
 
 
     @PostMapping("/users")
-    public RedirectView createUser(String userName, String password, String firstName, String lastName,String dateOfBirth, String bio) throws ParseException {
+    public RedirectView createUser(String username, String password, String dateOfBirth, String firstName, String lastName, String bio) throws ParseException {
         String hashedpwd = bCryptPasswordEncoder.encode(password);
         Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
-        ApplicationUser newUser = new ApplicationUser(userName, hashedpwd, firstName, lastName,dob, bio);
+        ApplicationUser newUser = new ApplicationUser(username, hashedpwd,dob, firstName, lastName, bio);
         applicationUserRepository.save(newUser);
         Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new ArrayList<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
