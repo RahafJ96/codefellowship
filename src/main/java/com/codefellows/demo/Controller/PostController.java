@@ -13,6 +13,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PostController {
@@ -35,6 +37,17 @@ public class PostController {
         m.addAttribute("principal", p.getName());
         m.addAttribute("applicationUser", user);
         return new RedirectView("/myprofile");
+    }
+    @GetMapping("/feed")
+    public String getFeedPage(Principal p, Model m) {
+        ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+        Set<ApplicationUser> following = applicationUser.getFollowing();
+        List<Post> posts = postRepository.findByApplicationUserIn(following);
+
+        m.addAttribute("posts",posts);
+        m.addAttribute("appUser",applicationUser);
+        m.addAttribute("principal", p.getName());
+        return "feed";
     }
 
     @GetMapping("/post")

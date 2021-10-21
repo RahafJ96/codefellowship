@@ -8,12 +8,14 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(unique = true)
+    long id;
 
     private String username;
     private String password;
@@ -24,6 +26,12 @@ public class ApplicationUser implements UserDetails {
 
     @OneToMany(mappedBy = "applicationUser")
     List<Post> posts;
+
+    @ManyToMany
+    private Set<ApplicationUser> followers;
+
+    @ManyToMany
+    private Set<ApplicationUser> following;
 
     public ApplicationUser(String username, String password,Date dateOfBirth, String firstName, String lastName,  String bio) {
         this.username = username;
@@ -40,6 +48,22 @@ public class ApplicationUser implements UserDetails {
 
     public ApplicationUser() {
 
+    }
+
+    public Set<ApplicationUser> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<ApplicationUser> followers) {
+        this.followers = followers;
+    }
+
+    public Set<ApplicationUser> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<ApplicationUser> following) {
+        this.following = following;
     }
 
     public String getUsername() {

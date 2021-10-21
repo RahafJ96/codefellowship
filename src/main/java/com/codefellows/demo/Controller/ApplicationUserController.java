@@ -31,7 +31,7 @@ public class ApplicationUserController {
     ApplicationUserRepository applicationUserRepository;
 
 
-    @PostMapping("/users")
+    @PostMapping("/createuser")
     public RedirectView createUser(String username, String password, String dateOfBirth, String firstName, String lastName, String bio) throws ParseException {
         String hashedpwd = bCryptPasswordEncoder.encode(password);
         Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
@@ -63,10 +63,45 @@ public class ApplicationUserController {
 
 
     @GetMapping("/users/{id}")
-    public String getSingleAppUserPage(Model m, @PathVariable String id) {
+    public String getSingleAppUserPage(Model m, Principal p, @PathVariable String id) {
         long ID = Long.parseLong(id);
         ApplicationUser applicationUser = applicationUserRepository.findById(ID);
         m.addAttribute("applicationUser", applicationUser);
+        m.addAttribute("principal",p.getName());
         return "singleappuser";
+    }
+
+    @GetMapping("/users")
+    public String getUsersPage(Principal p, Model m) {
+        ApplicationUser appUser = applicationUserRepository.findByUsername(p.getName());
+        Iterable<ApplicationUser> users = applicationUserRepository.findAll();
+        m.addAttribute("applicationUser",appUser);
+        m.addAttribute("principal", p.getName());
+        m.addAttribute("users", users);
+        return "users";
+    }
+
+    @GetMapping("/following")
+    public String getFollowingPage(Principal p, Model m) {
+        ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+        Iterable<ApplicationUser> users = applicationUser.getFollowing();
+        m.addAttribute("applicationUser",applicationUser);
+        m.addAttribute("principal", p.getName());
+        m.addAttribute("users", users);
+        return "following";
+    }
+
+    @PostMapping("/follow/{id}")
+    public RedirectView followUser(Principal p, @PathVariable long id) throws ParseException {
+
+        ApplicationUser loggedInUser = applicationUserRepository.findByUsername(p.getName());
+        ApplicationUser userToFollow = applicationUserRepository.findById(id);
+
+        loggedInUser.getFollowing().add(userToFollow);
+        userToFollow.getFollowers().add(loggedInUser);
+        applicationUserRepository.save(loggedInUser);
+        applicationUserRepository.save(userToFollow);
+
+        return new RedirectView("/users");
     }
 }

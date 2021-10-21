@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www,thymeleaf.org">
 <head>
-    <link
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-    >
-    <link href="../static/css/style.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Following</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-<header>
+<main>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <span class="navbar-brand mb-0 h1">Codefellowship</span>
 
@@ -49,17 +44,17 @@
             </div>
         </div>
     </nav>
-</header>
-<h1>Application User - <span th:text="${applicationUser.username}"></span></h1>
+</main>
+<h2>Who I'm Following</h2>
 
-<p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
-<p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
-<p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
-<p>Bio: <span th:text="${applicationUser.bio}"></span></p>
+<ul class="following-list">
+    <li th:each="user : ${users}">
+        <a th:href="@{'/users/' + ${user.id}}">
+            <span th:text="${user.firstName}"></span>
+            <span th:text="${user.lastName}"></span>
+        </a>
 
-<form class="follow-button-form" method="POST" th:action="'/follow/' + ${applicationUser.id}" >
-    <button type="submit">Follow</button>
-</form>
-
+    </li>
+</ul>
 </body>
 </html>
