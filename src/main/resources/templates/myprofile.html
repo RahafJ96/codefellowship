@@ -76,14 +76,15 @@
         </div>
     </div>
 
-    <div th:replace="fragments/post :: post">my Post</div>
-
-    <ul>
-        <li th:each="post : ${applicatonUser.posts}">
-            <p><span th:text="${post.createdAt}"></span></p>
-            <p><span th:text="${post.body}"></span></p>
-        </li>
-    </ul>
+    <div style="text-align: center" th:replace="addingPost/post :: post">My Post</div>
+    <table class="table" style="margin-left: 20%; width: 60%; text-align: center">
+        <thead >
+        <tr style="text-align: center" th:each="post : ${applicatonUser.posts}">
+            <th th:text="${post.createdAt}" scope="col"></th>
+            <th th:text="${post.body}" scope="col"></th>
+        </tr>
+        </thead>
+    </table>
 </main>
 </body>
 </html>

@@ -1,0 +1,16 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<form method="POST" action="/posts" th:fragment="post" xmlns:th="http://www.springframework.org/schema/security" style="text-align: center; margin-top: 50px" >
+
+
+  <label  for="body"  style="text-align: center; margin-top: 10px">
+    <p class="label-txt">Create a Post here !</p>
+    <textarea name="body" id="body" class="input" rows="10" cols="100"></textarea>
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <br/>
+  <input class="btn btn-lg btn-success" style="width: 40%" type="submit" />
+</form>
