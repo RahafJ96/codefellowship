@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www,thymeleaf.org">
 <head>
-    <link
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-    >
-    <link href="../static/css/style.css" rel="stylesheet">
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" >
+    <title>Feed</title>
+  <link
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+  ></head>
 </head>
 <body>
-<header>
+<main>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <span class="navbar-brand mb-0 h1">Codefellowship</span>
 
@@ -49,17 +48,23 @@
             </div>
         </div>
     </nav>
-</header>
-<h1>Application User - <span th:text="${applicationUser.username}"></span></h1>
+</main>
 
-<p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
-<p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
-<p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
-<p>Bio: <span th:text="${applicationUser.bio}"></span></p>
+<h2>Feed</h2>
 
-<form class="follow-button-form" method="POST" th:action="'/follow/' + ${applicationUser.id}" >
-    <button type="submit">Follow</button>
-</form>
+<ul class="feed-list">
+    <li th:each="post : ${posts}">
+        <span th:text="${post.createdAt}"></span>
+        <span th:text="${post.body}"></span>
 
+        <a th:href="@{'/users/' + ${post.applicationUser.id}}"></a>
+        <a th:href="@{'/users/' + ${post.applicationUser.id}}">
+<!--            <span th:text="${post.applicationUser.firstName}"></span>-->
+<!--            <span th:text="${post.applicationUser.lastName}"></span>-->
+            <span th:text="${post.applicationUser.username}"></span>
+        </a>
+    </li>
+</ul>
+</main>
 </body>
 </html>
