@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" >
     <title>Feed</title>
@@ -11,7 +11,6 @@
   ></head>
 </head>
 <body>
-<main>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <span class="navbar-brand mb-0 h1">Codefellowship</span>
 
@@ -48,23 +47,54 @@
             </div>
         </div>
     </nav>
-</main>
 
-<h2>Feed</h2>
+<!--<ul class="feed-list">-->
+<!--    <li th:each="post : ${posts}">-->
+<!--        <span th:text="${post.createdAt}"></span>-->
+<!--        <span th:text="${post.body}"></span>-->
 
-<ul class="feed-list">
-    <li th:each="post : ${posts}">
-        <span th:text="${post.createdAt}"></span>
-        <span th:text="${post.body}"></span>
-
-        <a th:href="@{'/users/' + ${post.applicationUser.id}}"></a>
-        <a th:href="@{'/users/' + ${post.applicationUser.id}}">
+<!--        <a th:href="@{'/users/' + ${post.applicationUser.id}}"></a>-->
+<!--        <a th:href="@{'/users/' + ${post.applicationUser.id}}">-->
 <!--            <span th:text="${post.applicationUser.firstName}"></span>-->
 <!--            <span th:text="${post.applicationUser.lastName}"></span>-->
-            <span th:text="${post.applicationUser.username}"></span>
-        </a>
-    </li>
-</ul>
-</main>
+<!--            <span th:text="${post.applicationUser.username}"></span>-->
+<!--        </a>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<!--        <div class="col-sm-6 feed-list" style="width:30%" th:each="post : ${posts}">-->
+<!--            <div class="card border-primary">-->
+<!--                <div class="card-body border-primary">-->
+<!--                    <div class="card-header bg-transparent"><h5 class="card-title">-->
+<!--                        <a th:href="@{'/users/' + ${post.applicationUser.id}}">-->
+<!--                        <span th:text="${post.applicationUser.firstName}"></span>-->
+<!--                        <span th:text="${post.applicationUser.lastName}"></span>-->
+<!--                    </a></h5></div>-->
+
+<!--                    <p class="card-text"><span th:text="${post.body}"></span></p>-->
+<!--                </div>-->
+<!--                <div class="card-footer bg-transparent border-primary color-primary"><span th:text="${post.createdAt}"></span></div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    <div class="container"> <div class="row mt-5"><div class="col"> <h1 class="h1 mb-5 text-center">Latest Feeds</h1> </div></div>
+        <div class="row" >
+            <div class="col text-center d-flex justify-content-center" style="width:30% ;margin: 2%" th:each="post : ${posts}">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a th:href="@{'/users/' + ${post.applicationUser.id}}">
+                                <span th:text="${post.applicationUser.firstName}"></span>
+                                <span th:text="${post.applicationUser.lastName}"></span>
+                            </a></h5>
+                        <div class="card-text">
+                            <p class="card-text"><span th:text="${post.body}"></span></p>
+                        </div>
+                        <div class="card-footer bg-transparent border-dark"><span th:text="${post.createdAt}"></span></div>
+                    </div></div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
