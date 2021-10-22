@@ -52,20 +52,28 @@
 </header>
 
 <main>
-    <h2>Users</h2>
-    <ul class="user-list">
-        <li th:each="user : ${users}">
-            <a th:href="@{'/users/' + ${user.id}}">
-<!--                <span th:text="${user.firstName}"></span>-->
-<!--                <span th:text="${user.lastName}"></span>-->
-                <span th:text="${user.username}"></span>
-            </a>
-            <form class="follow-button-form" method="POST" th:action="'/follow/' + ${user.id}" >
-                <button type="submit">Follow</button>
-            </form>
-
-        </li>
-    </ul>
+    <div class="container"> <div class="row mt-5"><div class="col"> <h1 class="h1 mb-5 text-center">Users</h1> </div></div>
+        <div class="row" >
+            <div class="col text-center d-flex justify-content-center" style="width:30%" th:each="user : ${users}">
+                <div class="card" style="width: 25rem;">
+                    <img src="https://cdn.icon-icons.com/icons2/412/PNG/128/UserAdd_40960.png"
+                         class="card-img-top" alt="image" style="width: 30%; display: block; margin-left: auto; margin-right: auto; padding: 2%">
+                    <div class="card-body">
+                        <h4 class="card-title" style="color: #8BC34A; text-decoration: none;">
+                            <a style="color: #8BC34A;" th:href="@{'/users/' + ${user.id}}">
+                                <span style="color: #8BC34A;" th:text="${user.username}"></span>
+                            </a>
+                        </h4>
+                        <div class="card-footer bg-transparent">
+                            <form class="follow-button-form" method="POST" th:action="'/follow/' + ${user.id}" >
+                            <button class="btn btn-success" style="width: 60%" type="submit">Follow</button>
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
 </body>

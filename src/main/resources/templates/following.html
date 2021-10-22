@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Following</title>
@@ -45,16 +45,22 @@
         </div>
     </nav>
 </main>
-<h2>Who I'm Following</h2>
+<div class="container"> <div class="row mt-5"><div class="col"> <h1 class="h1 mb-5 text-center">My Following</h1> </div></div>
+        <div class="row" >
+        <div class="col text-center d-flex justify-content-center" th:each="user : ${users}">
+            <div class="card" style="width: 20rem;">
+                <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                     class="card-img-top" alt="image" style="width: 50%; display: block; margin-left: auto; margin-right: auto;">
+                <div class="card-body">
+                    <h5 class="card-title"><a th:href="@{'/users/' + ${user.id}}"></a></h5>
+                    <div class="card-text"><h5>
+                        <a th:href="@{'/users/' + ${user.id}}">
+                            <span th:text="${user.firstName}"></span>
+                            <span th:text="${user.lastName}"></span>
+                        </a></h5></div></div></div>
 
-<ul class="following-list">
-    <li th:each="user : ${users}">
-        <a th:href="@{'/users/' + ${user.id}}">
-            <span th:text="${user.firstName}"></span>
-            <span th:text="${user.lastName}"></span>
-        </a>
-
-    </li>
-</ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>
