@@ -9,9 +9,17 @@
     >
     <link href="../static/css/style.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Codefellows</title>
 </head>
 <body>
+<style>
+    span{
+        font-weight: bold;
+    }
+    p{
+        text-align: left;
+    }
+</style>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <span class="navbar-brand mb-0 h1">Codefellowship</span>
@@ -50,16 +58,27 @@
         </div>
     </nav>
 </header>
-<h1>Application User - <span th:text="${applicationUser.username}"></span></h1>
-
-<p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
-<p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
-<p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
-<p>Bio: <span th:text="${applicationUser.bio}"></span></p>
-
-<form class="follow-button-form" method="POST" th:action="'/follow/' + ${applicationUser.id}" >
-    <button type="submit">Follow</button>
-</form>
+<div class="container"> <div class="row mt-5"><div class="col"> <h1 class="h1 mb-5 text-center">Application User - <span th:text="${applicationUser.username}"></span> </h1> </div></div>
+    <div class="row" >
+        <div class="col text-center d-flex justify-content-center" style="width:20%">
+            <div class="card" style="width: 25rem;">
+                <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                     class="card-img-top" alt="image" style="width: 50%; display: block; margin-left: auto; margin-right: auto; padding: 1%">
+                <div class="card-body">
+                    <p>First Name: <span  th:text="${applicationUser.firstName}"></span></p>
+                    <p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
+                    <p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
+                    <p>Bio: <span th:text="${applicationUser.bio}"></span></p>
+                    <div class="card-footer bg-transparent">
+                        <form class="follow-button-form" method="POST" th:action="'/follow/' + ${applicationUser.id}" >
+                            <button class="btn btn-success" style="width: 60%" type="submit">Follow</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
